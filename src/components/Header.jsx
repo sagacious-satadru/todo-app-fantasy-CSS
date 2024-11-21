@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Header = (props) => {
-  const { todos } = props;
-  const todosLength = todos.length;
-  const taskMessage = todosLength === 1 ? `You have ${todosLength} open task` : `You have ${todosLength} open tasks`;
+  const { todos } = props;  
+  const noOfOpenTasks = todos.filter((task) => !task.completed).length;
+  const taskMessage = noOfOpenTasks === 1 ? `You have ${noOfOpenTasks} open task` : `You have ${noOfOpenTasks} open tasks`;
   return (
     <div>
       <header className='text-gradient'>{taskMessage}</header>

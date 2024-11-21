@@ -1,2 +1,2 @@
 # todo-October
- To-do app made with React.JS and Fanta CSS
+ To-do app made with React.JS, Fanta CSS and tailwind CSS.

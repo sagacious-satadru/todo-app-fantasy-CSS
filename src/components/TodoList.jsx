@@ -1,27 +1,31 @@
-// In src/components/TodoList.jsx
 import React from "react";
 import TodoCard from "./TodoCard";
 
-const TodoList = (props) => {
-  const { todos, selectedTab } = props;
-
-  const filterTodosList = todos
-    .map((todo, index) => ({ todo, index }))
-    .filter(({ todo }) => {
-      if (selectedTab === "All") return true;
-      if (selectedTab === "Open") return !todo.completed;
-      if (selectedTab === "Completed") return todo.completed;
-      return false;
-    });
+const TodoList = ({
+  todos,
+  selectedTab,
+  handleCompleteTodo,
+  handleDeleteTodo,
+  markAsUndone,
+  handleEditTodo,
+}) => {
+  const filterTodosList = todos.filter((todo) => {
+    if (selectedTab === "All") return true;
+    if (selectedTab === "Open") return !todo.completed;
+    if (selectedTab === "Completed") return todo.completed;
+    return false;
+  });
 
   return (
     <>
-      {filterTodosList.map(({ todo, index }) => (
+      {filterTodosList.map((todo) => (
         <TodoCard
-          key={index}
-          todoIndex={index}
-          {...props}
+          key={todo.id}
           todo={todo}
+          handleCompleteTodo={handleCompleteTodo}
+          handleDeleteTodo={handleDeleteTodo}
+          markAsUndone={markAsUndone}
+          handleEditTodo={handleEditTodo}
         />
       ))}
     </>
